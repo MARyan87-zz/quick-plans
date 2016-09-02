@@ -11,16 +11,21 @@ h1{
 label{
 	color: black;
 	font-size: 15px;
+	margin-left: 10px;
+}
+form{
+	display: flex;
+	justify-content: center;
+}
+#submit-button{
+	float: right;
+	
 }
 .jumbotron{
 	opacity: .5;
 }
 .info{
 	float: left;
-	margin-left: 100px;
 	opacity: .9;
-}
-.panel{
-	background-color: inherit;
-	border: none;
+	display: flex;
 }
