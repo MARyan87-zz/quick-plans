@@ -1,1 +1,3 @@
-//fdsknfksd
+$.get(api, function(){
+
+});
