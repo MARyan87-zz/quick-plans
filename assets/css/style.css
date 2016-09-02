@@ -1,4 +1,26 @@
+body{
+	background:url(https://newevolutiondesigns.com/images/freebies/city-wallpaper-2.jpg);
+	background-size: cover;
+}
+h1{
+	color: red;
+	padding: 20px;
+	font-size: 60px;
+	font-weight: 10px;
+}
+label{
+	color: black;
+	font-size: 15px;
+}
+.jumbotron{
+	opacity: .5;
+}
 .info{
 	float: left;
-	margin-left: 80px;
+	margin-left: 100px;
+	opacity: .9;
+}
+.panel{
+	background-color: inherit;
+	border: none;
 }
