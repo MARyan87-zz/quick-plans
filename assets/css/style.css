@@ -1,6 +1,7 @@
 body{
 	background:url(https://newevolutiondesigns.com/images/freebies/city-wallpaper-2.jpg);
 	background-size: cover;
+	background-opacity:.9px;
 }
 h1{
 	color: red;
@@ -17,12 +18,18 @@ form{
 	display: flex;
 	justify-content: center;
 }
+img{
+	width: 300px;
+	height: auto;
+	opacity: .95;
+
+}
 #submit-button{
-	float: right;
-	
+ 	position: relative;
+ 	left: 50px;
 }
 .jumbotron{
-	opacity: .5;
+	background: transparent;
 }
 .info{
 	float: left;
