@@ -29,3 +29,12 @@ form{
 	opacity: .9;
 	display: flex;
 }
+.expand{
+	float: right;
+}
+.movieItem{
+	list-style: none;
+}
+.hide{
+	display: none;
+}
