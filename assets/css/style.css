@@ -38,9 +38,36 @@ img{
 }
 .expand{
 	float: right;
+	color: red;
+	font-size: 3em;
 }
 .movieItem{
 	list-style: none;
+}
+.movieItem:hover{
+	background-color: red;
+	color: white;
+	cursor: pointer;
+}
+.movieItem:hover .theaters{
+	color: red;
+	background-color: white;
+}
+.movieItem:hover .expand{
+	color: white;
+}
+.movieItem:hover .site{
+	color: white;
+}
+.title{
+	display: inline-block;
+}
+.site{
+	float: right;
+	color: red;
+}
+.theaters{
+	margin-bottom:15px;
 }
 .hide{
 	display: none;

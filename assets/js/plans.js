@@ -32,41 +32,60 @@ var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query
 		
 		var startDate = $('#date-input').val();
 		var zipCode = $('#zip-input').val();
-
 		var api = 'http://data.tmsapi.com/v1.1/movies/showings?startDate=' + startDate + '&zip=' + zipCode + '&api_key=3c7u9b4fnquyfbbkqzc2tzgj';
-		console.log(startDate);
+		
+		
 
 		$.ajax({url: api, method: 'GET'})
 			.done(function(data){
 				console.log(data);
 				
 				var movieList = $('<ul class="panel-body list-group" id="movieList">');
-				for (var i=0; i<data.length; i++){
+				
+				for (var i=0; i<10; i++){
+					
 					var rating = "Not Rated";
+					
 					if (data[i].hasOwnProperty("ratings")){
-						var rating = data[i].ratings[0].code;
+				        rating = data[i].ratings[0].code;
 					}
-
-					$(movieList).append('<li class="movieItem list-group-item"><h3>' + data[i].title +
-										 '<span class="expand">+</span></h3>'+'<p class=rating>' + rating + 
+					
+					$(movieList).append('<li class="movieItem list-group-item"><h3 class="title">' + data[i].title +
+										 '</h3><span class="expand">+</span>'+'<p class=rating>' + rating + 
 										 '</p>' + '<section class="hide" id="movie' + i + '">');
-
-
 				}
 				$('#movieDisplay').html(movieList);
 				for (var i=0; i<data.length; i++){
 					var currentMovie = '#movie' + i,
 						plot = data[i].shortDescription,
-						website = data[i].officialUrl;
+						website = data[i].officialUrl,
+						cast = data[i].topCast,
+						theaters = [];
+						
+					$(currentMovie).append('<h4 id="cast">Cast</h4><ul id="cast-members">');
+					for (var castMember in cast){
+						$(currentMovie + ' #cast-members').append('<li>' + cast[castMember]);
+					}
+					$(currentMovie).append('<p id="plot">' + plot);
+					$(currentMovie).append('<select class="form-control theaters">');
+					$(currentMovie).append('<button class="btn btn-default">Buy Tickets</button>');
+					$(currentMovie).append('<a class="site" target="_blank" href="' + website + '">Official Website</a>');
 
+					data[i].showtimes.forEach(function(i){
+						if (theaters.indexOf(i.theatre.name) == -1){
+							theaters.push(i.theatre.name);
+						}
+					});
+					theaters.forEach(function(i){
+						$(currentMovie + ' .theaters').append('<option>' + i);
+					});
 
-					$(currentMovie).html('<p id="plot">' + plot);
-					$(currentMovie).append('<a target="_blank" href="' + website + '">Official Website</a>');
 				}
 		});
 	});
 });//end doc.ready
 
-$(document).on('click', '.movieItem', function(){
-	$(this).find('section').toggleClass('hide');
+$(document).on('click', '.expand', function(){
+	var clickedMovie = $(this).parent();
+	$(clickedMovie).find('section').toggleClass('hide');
 })
