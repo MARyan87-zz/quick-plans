@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quick Plans</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  </head>
+  <body>
+
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <img src="assets/images/qplanslogo.png">
+    </div>
+
+    <form class="form">
+    <div class="info well col-lg-12">
+    
+        <label for="number">Enter Your Zipcode:</label>
+        <input type="number" name="zipcode" placeholder="Ex- 29076" id="zip-input">
+
+        <label for="text">Enter Your City:</label>
+        <input type="text" name="city" placeholder="Ex- New York" id="city-input">
+
+
+        <label for="date">Date Wanting To Make Plans:</label>
+        <input type="date" format="mm/dd/yyyy" placeholder="mm/dd/yyyy" id="date-input">
+
+        <input type="submit" id="submit-button">
+    </div>
+    </form>
+
+    <div id="foodDisplay" class="col-lg-6">
+      <div class="well"></div>
+    </div>
+
+    <div id="movieDisplay" class="col-lg-6 well">
+      <h2 class="panel panel-heading text-center">Movies in Theaters</h2>
+      
+    </div>
+
+  </div>
+
+  <!-- jQuery Script -->
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+  <!-- JavaScript Source -->
+  <script src="assets/js/plans.js"></script>
+
+  </body>
+</html>
