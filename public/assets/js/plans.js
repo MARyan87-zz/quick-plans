@@ -28,17 +28,20 @@ $(document).ready(function() {
 				        rating = data[i].ratings[0].code;
 					}
 					
-					$(movieList).append('<li class="movieItem list-group-item"><h3 class="title">' + data[i].title +
+					$(movieList).append('<li class="movieItem list-group-item"><h3 						class="title">' + data[i].title +
 										 '</h3><span class="expand">+</span>'+'<p class=rating>' + rating + 
 										 '</p>' + '<section class="hide" id="movie' + i + '">');
 				}
 				$('#movieDisplay').html(movieList);
+				
 				for (var i=0; i<data.length; i++){
 					var currentMovie = '#movie' + i,
 						plot = data[i].shortDescription,
 						website = data[i].officialUrl,
 						cast = data[i].topCast,
-						theaters = [];
+						theaters = [],
+						ticketURLs = [];
+					
 						
 					$(currentMovie).append('<h4 id="cast">Cast</h4><ul id="cast-members">');
 					for (var castMember in cast){
@@ -46,19 +49,25 @@ $(document).ready(function() {
 					}
 					$(currentMovie).append('<p id="plot">' + plot);
 					$(currentMovie).append('<select class="form-control theaters">');
-					$(currentMovie).append('<button class="btn btn-default">Buy Tickets</button>');
+					$(currentMovie).append('<button id="buy-tickets" class="btn btn-default">Buy Tickets</button>');
 					$(currentMovie).append('<a class="site" target="_blank" href="' + website + '">Official Website</a>');
 
 					data[i].showtimes.forEach(function(i){
-						if (theaters.indexOf(i.theatre.name) == -1){
+						if (theaters.indexOf(i.theatre.name) == -1 ){
 							theaters.push(i.theatre.name);
+							ticketURLs.push(i.ticketURI);
 						}
+						
 					});
+
 					theaters.forEach(function(i){
 						$(currentMovie + ' .theaters').append('<option>' + i);
 					});
-
+					console.log(ticketURLs);
 				}
+
+
+
 		});
 
 
@@ -132,4 +141,9 @@ $(document).ready(function() {
 $(document).on('click', '.expand', function(){
 	var clickedMovie = $(this).parent();
 	$(clickedMovie).find('section').toggleClass('hide');
-})
+	
+
+});
+$(document).on('click', '#buy-tickets', function(){
+	window.open()
+});
