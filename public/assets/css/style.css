@@ -25,8 +25,7 @@ img{
 
 }
 #submit-button{
- 	position: relative;
- 	left: 50px;
+ 	margin-left: 10px;
 }
 #foodDisplay,
 #movieDisplay{
@@ -39,9 +38,11 @@ img{
 	background: transparent;
 }
 .info{
-	float: left;
 	opacity: .9;
 	display: flex;
+}
+.title{
+	max-width: 90%;
 }
 .expand{
 	float: right;
