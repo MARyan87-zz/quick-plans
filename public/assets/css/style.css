@@ -21,22 +21,12 @@ form{
 img{
 	width: 300px;
 	height: auto;
-	opacity: .94;
+	opacity: .95;
 
-}
-input{
-	margin-left: 5px;
 }
 #submit-button{
  	position: relative;
  	left: 50px;
-}
-#foodDisplay,
-#movieDisplay{
-	margin: 5.0115px;
-	max-width: 560px;
-	float: left;
-
 }
 .jumbotron{
 	background: transparent;
