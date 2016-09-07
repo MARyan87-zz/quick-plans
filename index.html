@@ -11,7 +11,7 @@
 <div class="container">
 
 	<div class="jumbotron text-center">
-		<h1>Quick Plans</h1>
+		<img src="assets/images/bletter2.png">
 	</div>
 
 	<form class="form">
@@ -25,19 +25,28 @@
 
 
 			<label for="date">Date Wanting To Make Plans:</label>
-			<input type="date" format="mm/dd/yyyy" placeholder="mm/dd/yyyy" id="zip-input">
+			<input type="date" format="mm/dd/yyyy" placeholder="mm/dd/yyyy" id="date-input">
 
 			<input type="submit" id="submit-button">
 	</div>
 	</form>
 
-	<div id="foodDisplay">
+	<div id="foodDisplay" class="col-lg-6 well">
+		<h2 class="panel panel-heading text-center">Restaurants</h2>
 	</div>
 
-	<div id="movieDisplay">
+	<div id="movieDisplay" class="col-lg-6 well">
+		<h2 class="panel panel-heading text-center">Movies in Theaters</h2>
+		
 	</div>
 
 </div>
+
+<!-- jQuery Script -->
+<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+<!-- JavaScript Source -->
+<script src="assets/js/plans.js"></script>
+<script src="javascript/food.js"></script>
 
 </body>
 </html>
