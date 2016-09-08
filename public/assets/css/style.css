@@ -17,7 +17,7 @@ h1{
 	font-weight: 10px;
 }
 label{
-	color: black;
+	color: white;
 	font-size: 15px;
 	margin-left: 10px;
 }
@@ -34,17 +34,48 @@ img{
 #submit-button{
  	margin-left: 10px;
 }
-#foodDisplay,
-#movieDisplay{
+#foodDisplay{
+	background: firebrick;
+	border: none;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
 	max-height: 500px;
+	/*max-width: 565px;*/
   	overflow: auto;
+}
+#movieDisplay{
+	
+	background: firebrick;
+	border: none;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+	max-height: 500px;
+	/*max-width: 565px;*/
+  	overflow: auto;
+}
+#content-area{
+	display: flex;
+	justify-content: space-between;
 }
 .jumbotron{
 	background: transparent;
 }
 .info{
 	opacity: .9;
-	display: flex;
+	background: firebrick;
+	border: none;
+}
+.panel-heading{
+	background-color:firebrick; 
+	color:white; 
+	border-radius: 20px;
+}
+.title{
+	max-width: 90%;
 }
 .title{
 	max-width: 90%;
@@ -58,9 +89,13 @@ img{
 	list-style: none;
 }
 .movieItem:hover{
-	background-color: red;
+	background-color: firebrick;
 	color: white;
 	cursor: pointer;
+}
+.movieItem:hover .theaters{
+	color: firebrick;
+	background-color: white;
 }
 .movieItem:hover .expand{
 	color: white;
@@ -95,6 +130,9 @@ img{
 }
 .hide{
 	display: none;
+}
+.panel-heading+.list-group .list-group-item:first-child {
+    border-top-width: thin;
 }
 .unavailable{
 	display: inline-block;

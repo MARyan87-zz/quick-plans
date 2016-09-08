@@ -43,7 +43,9 @@ $(document).ready(function() {
 						
 					
 						
+
 					$(currentMovie).append('<h4 class="cast">Cast</h4><ul class="cast-members">');
+
 					for (var castMember in cast){
 						$(currentMovie + ' .cast-members').append('<li class="actor">' + cast[castMember]);
 					}
@@ -64,6 +66,7 @@ $(document).ready(function() {
 							$(currentMovie + ' .theaters').append(i);
 					});
 					console.log(theaters);
+
 					$(currentMovie + ' .theaters').first().attr('selected');
 				}
 
@@ -150,8 +153,11 @@ $(document).on('click', '.expand', function(){
 	$(clickedMovie).addClass('open');
 	$(clickedMovie).find('section').toggleClass('hide');
 
-
 });
+
+
+
+
 
 //Buy movie tickets button
 $(document).on('click', '#buy-tickets', function(){
