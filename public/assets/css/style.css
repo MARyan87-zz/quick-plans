@@ -1,3 +1,10 @@
+html,body, .container{
+	height: 100%;
+}
+#map{
+	height: 500px;
+	margin-bottom: 25px;
+}
 body{
 	background:url(https://newevolutiondesigns.com/images/freebies/city-wallpaper-2.jpg);
 	background-size: cover;
@@ -75,7 +82,7 @@ img{
 }
 .actor{
 	display: inline-block;
-	margin: 0px 10px 0px 10px;
+	margin: 0px 20px;
 }
 .site{
 	float: right;
