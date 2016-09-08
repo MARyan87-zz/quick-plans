@@ -9,7 +9,7 @@ $(document).ready(function() {
 		//Movie Search API
 		var startDate = $('#date-input').val().trim();
 		var zipCode = $('#zip-input').val().trim();
-		var api = 'http://data.tmsapi.com/v1.1/movies/showings?startDate=' + startDate + '&zip=' + zipCode + '&api_key=kfh7px56m24sttw262g6scvs';
+		var api = 'http://data.tmsapi.com/v1.1/movies/showings?radius=15&startDate=' + startDate + '&zip=' + zipCode + '&api_key=kfh7px56m24sttw262g6scvs';
 		
 		
 
