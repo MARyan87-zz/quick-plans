@@ -43,11 +43,11 @@ $(document).ready(function() {
 						
 					
 						
-					$(currentMovie).append('<h4 id="cast">Cast</h4><ul id="cast-members">');
+					$(currentMovie).append('<h4 class="cast">Cast</h4><ul class="cast-members">');
 					for (var castMember in cast){
-						$(currentMovie + ' #cast-members').append('<li>' + cast[castMember]);
+						$(currentMovie + ' .cast-members').append('<li class="actor">' + cast[castMember]);
 					}
-					$(currentMovie).append('<p id="plot">' + plot);
+					$(currentMovie).append('<p class="plot">' + plot);
 					$(currentMovie).append('<select class="form-control theaters">');
 					$(currentMovie).append('<button id="buy-tickets" class="btn btn-default">Buy Tickets</button>');
 					$(currentMovie).append('<a class="site" target="_blank" href="' + website + '">Official Website</a>');
@@ -61,9 +61,10 @@ $(document).ready(function() {
 					});
 
 					theaters.forEach(function(i){
-						$(currentMovie + ' .theaters').append('<option>' + i);
+							$(currentMovie + ' .theaters').append(i);
 					});
 					console.log(theaters);
+					$(currentMovie + ' .theaters').first().attr('selected');
 				}
 
 
@@ -144,12 +145,22 @@ $(document).ready(function() {
 
 $(document).on('click', '.expand', function(){
 	var clickedMovie = $(this).parent();
+	$('.open').find('section').toggleClass('hide');
+	$('.open').removeClass('open');
+	$(clickedMovie).addClass('open');
 	$(clickedMovie).find('section').toggleClass('hide');
-	
+
 
 });
+
+//Buy movie tickets button
 $(document).on('click', '#buy-tickets', function(){
 	var ticketURL = $(this).siblings('select').children('option:selected').attr('data-ticket');
-	window.open(ticketURL);
-	
+	if (ticketURL == 'undefined'){
+		$(this).parent().append('<p class="unavailable">Tickets unavailable');
+		console.log('undefined');
+	}
+	else{
+		window.open(ticketURL);
+	}
 });

@@ -29,7 +29,6 @@ img{
 }
 #foodDisplay,
 #movieDisplay{
-	float: left;
 	max-height: 500px;
   	overflow: auto;
 }
@@ -56,10 +55,6 @@ img{
 	color: white;
 	cursor: pointer;
 }
-.movieItem:hover .theaters{
-	color: red;
-	background-color: white;
-}
 .movieItem:hover .expand{
 	color: white;
 }
@@ -68,14 +63,37 @@ img{
 }
 .title{
 	display: inline-block;
+	font-variant: small-caps;
+}
+.cast{
+	font-weight: bold;
+}
+.cast-members{
+	border-bottom: 2px solid white;
+	margin-bottom:5px;
+	padding-bottom: 5px;
+}
+.actor{
+	display: inline-block;
+	margin: 0px 10px 0px 10px;
 }
 .site{
 	float: right;
-	color: red;
+	color: white;
 }
-.theaters{
+.theaters, option{
 	margin-bottom:15px;
+	color: red;
+	font-weight: bold;
 }
 .hide{
 	display: none;
+}
+.unavailable{
+	display: inline-block;
+	margin-left: 15px;
+}
+.open{
+	background-color: red;
+	color: white;
 }
