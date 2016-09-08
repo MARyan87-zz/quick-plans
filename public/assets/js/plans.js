@@ -1,4 +1,4 @@
-
+// GRACENOTE API Keys:  kfh7px56m24sttw262g6scvs      3c7u9b4fnquyfbbkqzc2tzgj
 
 //JavaScript for Google Place API
 $(document).ready(function() {
@@ -9,7 +9,7 @@ $(document).ready(function() {
 		//Movie Search API
 		var startDate = $('#date-input').val().trim();
 		var zipCode = $('#zip-input').val().trim();
-		var api = 'http://data.tmsapi.com/v1.1/movies/showings?startDate=' + startDate + '&zip=' + zipCode + '&api_key=3c7u9b4fnquyfbbkqzc2tzgj';
+		var api = 'http://data.tmsapi.com/v1.1/movies/showings?startDate=' + startDate + '&zip=' + zipCode + '&api_key=kfh7px56m24sttw262g6scvs';
 		
 		
 
@@ -39,8 +39,8 @@ $(document).ready(function() {
 						plot = data[i].shortDescription,
 						website = data[i].officialUrl,
 						cast = data[i].topCast,
-						theaters = [],
-						ticketURLs = [];
+						theaters = [];
+						
 					
 						
 					$(currentMovie).append('<h4 id="cast">Cast</h4><ul id="cast-members">');
@@ -53,9 +53,9 @@ $(document).ready(function() {
 					$(currentMovie).append('<a class="site" target="_blank" href="' + website + '">Official Website</a>');
 
 					data[i].showtimes.forEach(function(i){
-						if (theaters.indexOf(i.theatre.name) == -1 ){
-							theaters.push(i.theatre.name);
-							ticketURLs.push(i.ticketURI);
+						var theaterItem = '<option data-ticket="'+ i.ticketURI +'">' + i.theatre.name;
+						if (theaters.indexOf(theaterItem) == -1 ){
+							theaters.push(theaterItem);
 						}
 						
 					});
@@ -63,7 +63,7 @@ $(document).ready(function() {
 					theaters.forEach(function(i){
 						$(currentMovie + ' .theaters').append('<option>' + i);
 					});
-					console.log(ticketURLs);
+					console.log(theaters);
 				}
 
 
@@ -145,5 +145,7 @@ $(document).on('click', '.expand', function(){
 
 });
 $(document).on('click', '#buy-tickets', function(){
-	window.open()
+	var ticketURL = $(this).siblings('select').children('option:selected').attr('data-ticket');
+	window.open(ticketURL);
+	
 });

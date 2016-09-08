@@ -27,13 +27,6 @@ img{
 #submit-button{
  	margin-left: 10px;
 }
-#foodDisplay,
-#movieDisplay{
-	margin: 5.0115px;
-	max-width: 560px;
-	float: left;
-
-}
 .jumbotron{
 	background: transparent;
 }
