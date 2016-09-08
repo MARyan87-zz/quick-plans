@@ -31,24 +31,28 @@
     </form>
 
 
-    <div class="row">
 
-    <div id="foodDisplay" class="col-lg-6 well">
-        <h2 class="panel panel-heading text-center">Restaurants</h2>
+    <div class='row' id="content-area">
+
+      <div id="foodDisplay" class="col-lg-6 well">
+          <h2 class="panel panel-heading text-center">Restaurants</h2>
+      </div>
+
+      <div id="movieDisplay" class="col-lg-6 well">
+          <h2 class="panel panel-heading text-center">Movies in Theaters</h2>
+      </div>
+
     </div>
+  </div>
 
-    <div id="movieDisplay" class="col-lg-6 well">
-      <h2 class="panel panel-heading text-center">Movies in Theaters</h2>
-    </div>
-
-    </div>
-
+    <div id='map' class='col-md-6'></div>
   </div>
 
   <!-- jQuery Script -->
   <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
   <!-- JavaScript Source -->
   <script src="assets/js/plans.js"></script>
-
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4UcpjPyyGuGbduMQ3ri-Gyd_JCPBhbXQ&amp;callback=initMap"
+    async defer></script>
   </body>
 </html>

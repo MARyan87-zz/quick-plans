@@ -1,3 +1,10 @@
+html,body, .container{
+	height: 100%;
+}
+#map{
+	height: 500px;
+	margin-bottom: 25px;
+}
 body{
 	background:url(https://newevolutiondesigns.com/images/freebies/city-wallpaper-2.jpg);
 	background-size: cover;
@@ -28,7 +35,6 @@ img{
  	margin-left: 10px;
 }
 #foodDisplay{
-	float: left;
 	background: firebrick;
 	border: none;
     border-top-left-radius: 25px;
@@ -36,11 +42,11 @@ img{
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
 	max-height: 500px;
-	max-width: 565px;
+	/*max-width: 565px;*/
   	overflow: auto;
 }
 #movieDisplay{
-	float: right;
+	
 	background: firebrick;
 	border: none;
     border-top-left-radius: 25px;
@@ -48,8 +54,12 @@ img{
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
 	max-height: 500px;
-	max-width: 565px;
+	/*max-width: 565px;*/
   	overflow: auto;
+}
+#content-area{
+	display: flex;
+	justify-content: space-between;
 }
 .jumbotron{
 	background: transparent;
@@ -63,6 +73,9 @@ img{
 	background-color:firebrick; 
 	color:white; 
 	border-radius: 20px;
+}
+.title{
+	max-width: 90%;
 }
 .title{
 	max-width: 90%;
@@ -92,17 +105,40 @@ img{
 }
 .title{
 	display: inline-block;
+	font-variant: small-caps;
+}
+.cast{
+	font-weight: bold;
+}
+.cast-members{
+	border-bottom: 2px solid white;
+	margin-bottom:5px;
+	padding-bottom: 5px;
+}
+.actor{
+	display: inline-block;
+	margin: 0px 20px;
 }
 .site{
 	float: right;
-	color: red;
+	color: white;
 }
-.theaters{
+.theaters, option{
 	margin-bottom:15px;
+	color: red;
+	font-weight: bold;
 }
 .hide{
 	display: none;
 }
 .panel-heading+.list-group .list-group-item:first-child {
     border-top-width: thin;
+}
+.unavailable{
+	display: inline-block;
+	margin-left: 15px;
+}
+.open{
+	background-color: red;
+	color: white;
 }
