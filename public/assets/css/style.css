@@ -10,7 +10,7 @@ h1{
 	font-weight: 10px;
 }
 label{
-	color: black;
+	color: white;
 	font-size: 15px;
 	margin-left: 10px;
 }
@@ -29,14 +29,26 @@ img{
 }
 #foodDisplay{
 	float: left;
+	background: firebrick;
+	border: none;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
 	max-height: 500px;
-	max-width: 550px;
+	max-width: 565px;
   	overflow: auto;
 }
 #movieDisplay{
 	float: right;
+	background: firebrick;
+	border: none;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
 	max-height: 500px;
-	max-width: 550px;
+	max-width: 565px;
   	overflow: auto;
 }
 .jumbotron{
@@ -44,6 +56,13 @@ img{
 }
 .info{
 	opacity: .9;
+	background: firebrick;
+	border: none;
+}
+.panel-heading{
+	background-color:firebrick; 
+	color:white; 
+	border-radius: 20px;
 }
 .title{
 	max-width: 90%;
@@ -57,12 +76,12 @@ img{
 	list-style: none;
 }
 .movieItem:hover{
-	background-color: red;
+	background-color: firebrick;
 	color: white;
 	cursor: pointer;
 }
 .movieItem:hover .theaters{
-	color: red;
+	color: firebrick;
 	background-color: white;
 }
 .movieItem:hover .expand{
@@ -83,4 +102,7 @@ img{
 }
 .hide{
 	display: none;
+}
+.panel-heading+.list-group .list-group-item:first-child {
+    border-top-width: thin;
 }
