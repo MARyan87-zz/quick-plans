@@ -81,7 +81,7 @@ img{
 	float: right;
 	color: white;
 }
-.theaters{
+.theaters, option{
 	margin-bottom:15px;
 	color: red;
 	font-weight: bold;
