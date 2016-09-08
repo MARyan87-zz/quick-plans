@@ -25,23 +25,28 @@ img{
 
 }
 #submit-button{
- 	position: relative;
- 	left: 50px;
+ 	margin-left: 10px;
 }
-#foodDisplay,
-#movieDisplay{
-	margin: 5.0115px;
-	max-width: 560px;
+#foodDisplay{
 	float: left;
-
+	max-height: 500px;
+	max-width: 550px;
+  	overflow: auto;
+}
+#movieDisplay{
+	float: right;
+	max-height: 500px;
+	max-width: 550px;
+  	overflow: auto;
 }
 .jumbotron{
 	background: transparent;
 }
 .info{
-	float: left;
 	opacity: .9;
-	display: flex;
+}
+.title{
+	max-width: 90%;
 }
 .expand{
 	float: right;

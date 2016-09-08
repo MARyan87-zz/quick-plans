@@ -1,4 +1,4 @@
-
+// GRACENOTE API Keys:  kfh7px56m24sttw262g6scvs      3c7u9b4fnquyfbbkqzc2tzgj
 
 //JavaScript for Google Place API
 $(document).ready(function() {
@@ -9,7 +9,7 @@ $(document).ready(function() {
 		//Movie Search API
 		var startDate = $('#date-input').val().trim();
 		var zipCode = $('#zip-input').val().trim();
-		var api = 'http://data.tmsapi.com/v1.1/movies/showings?startDate=' + startDate + '&zip=' + zipCode + '&api_key=3c7u9b4fnquyfbbkqzc2tzgj';
+		var api = 'http://data.tmsapi.com/v1.1/movies/showings?radius=15&startDate=' + startDate + '&zip=' + zipCode + '&api_key=kfh7px56m24sttw262g6scvs';
 		
 		
 
@@ -28,11 +28,12 @@ $(document).ready(function() {
 				        rating = data[i].ratings[0].code;
 					}
 					
-					$(movieList).append('<li class="movieItem list-group-item"><h3 class="title">' + data[i].title +
+					$(movieList).append('<li class="movieItem list-group-item"><h3 						class="title">' + data[i].title +
 										 '</h3><span class="expand">+</span>'+'<p class=rating>' + rating + 
 										 '</p>' + '<section class="hide" id="movie' + i + '">');
 				}
-				$('#movieDisplay').html(movieList);
+				$('#movieDisplay').append(movieList);
+				
 				for (var i=0; i<data.length; i++){
 					var currentMovie = '#movie' + i,
 						plot = data[i].shortDescription,
@@ -40,25 +41,33 @@ $(document).ready(function() {
 						cast = data[i].topCast,
 						theaters = [];
 						
+					
+						
 					$(currentMovie).append('<h4 id="cast">Cast</h4><ul id="cast-members">');
 					for (var castMember in cast){
 						$(currentMovie + ' #cast-members').append('<li>' + cast[castMember]);
 					}
 					$(currentMovie).append('<p id="plot">' + plot);
 					$(currentMovie).append('<select class="form-control theaters">');
-					$(currentMovie).append('<button class="btn btn-default">Buy Tickets</button>');
+					$(currentMovie).append('<button id="buy-tickets" class="btn btn-default">Buy Tickets</button>');
 					$(currentMovie).append('<a class="site" target="_blank" href="' + website + '">Official Website</a>');
 
 					data[i].showtimes.forEach(function(i){
-						if (theaters.indexOf(i.theatre.name) == -1){
-							theaters.push(i.theatre.name);
+						var theaterItem = '<option data-ticket="'+ i.ticketURI +'">' + i.theatre.name;
+						if (theaters.indexOf(theaterItem) == -1 ){
+							theaters.push(theaterItem);
 						}
+						
 					});
+
 					theaters.forEach(function(i){
 						$(currentMovie + ' .theaters').append('<option>' + i);
 					});
-
+					console.log(theaters);
 				}
+
+
+
 		});
 
 
@@ -76,14 +85,13 @@ $(document).ready(function() {
 		     	console.log("response: "+response);
 		     	var restList = $('<ul class="panel-body list-group" id="restList">');
 
-		     	$('#foodDisplay').html(restList);
+		     	$('#foodDisplay').append(restList);
 		     	for (i=0; i<5; i++) {
 
-		     		console.log(response.results[i].name);
-		     		var restName = response.results[i].name;
-					var restAddress = response.results[i].formatted_address;
-					var restPrice = response.results[i].price_level;
-					var restRating = response.results[i].rating;
+		   //   		var restName = response.results[i].name;
+					// var restAddress = response.results[i].formatted_address;
+					// var restPrice = response.results[i].price_level;
+					// var restRating = response.results[i].rating;
 					var restID = response.results[i].place_id;
 
 		     		var detailURL = "https://maps.googleapis.com/maps/api/place/details/json?placeid="
@@ -93,17 +101,22 @@ $(document).ready(function() {
 
 					$.ajax({url: detailURL, method: 'GET'})
 		 			.done(function(data) {
-		 				// console.log('data1: '+ data[1].result);
-		 				console.log('data2: '+ JSON.stringify(data, 0,2));
-		 				// console.log('data3: '+ data[1]);
+		 				console.log('data: '+ JSON.stringify(data, 0,2));
+		 				var restName = data.result.name;
+		 				var restPhone = data.result.formatted_phone_number;
+						var restAddress = data.result.formatted_address;
+						var restPrice = data.result.price_level;
+						var restRating = data.result.rating;
+
 		 				$(restList).append('<li class="restItem list-group-item">'
-		 					+ '<h3>' + data.result.name + '</h3>'
-		 					+ '<p>Address: ' + data.result.formatted_address + '</p>'
-		 					+ '<p>Phone Number: ' + data.result.formatted_phone_number+'</p>'
-		 					+ '<p>Price Level: ' + data.result.price_level + '</p>'
-		 					+ '<a href="'+data.result.website+'">Website:</a><br>'
-		 					+ '<a href="'+data.result.url+'">Directions:</a><br>'
-		 					+ '<p>Hours: ' 
+		 					+ '<h3>' + restName + '</h3>'
+		 					+ '<p>Address: ' + restAddress + '</p>'
+		 					+ '<p>Phone Number: ' + restPhone +'</p>'
+		 					+ '<p>Rating: ' + restRating + '</p>'
+		 					+ '<p>Price Level: ' + restPrice + '</p>'
+		 					+ '<a target="_blank" href="'+data.result.website+'">Website:</a><br>'
+		 					+ '<a target="_blank" href="'+data.result.url+'">Directions:</a><br>'
+		 					+ '<p>Hours: '+'<br>' 
 		 						+ data.result.opening_hours.weekday_text[0]+'<br>'
 		 						+ data.result.opening_hours.weekday_text[1]+'<br>'
 		 						+ data.result.opening_hours.weekday_text[2]+'<br>'
@@ -132,4 +145,11 @@ $(document).ready(function() {
 $(document).on('click', '.expand', function(){
 	var clickedMovie = $(this).parent();
 	$(clickedMovie).find('section').toggleClass('hide');
-})
+	
+
+});
+$(document).on('click', '#buy-tickets', function(){
+	var ticketURL = $(this).siblings('select').children('option:selected').attr('data-ticket');
+	window.open(ticketURL);
+	
+});
