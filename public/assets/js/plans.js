@@ -138,7 +138,7 @@ $(document).ready(function() {
 
 		 	//More Info Button
 
-
+		 	
 
 	});
 });//end doc.ready
@@ -164,3 +164,43 @@ $(document).on('click', '#buy-tickets', function(){
 		window.open(ticketURL);
 	}
 });
+
+//maps apikey AIzaSyC4UcpjPyyGuGbduMQ3ri-Gyd_JCPBhbXQ
+
+
+
+
+
+
+
+
+function initMap() {
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: {lat: 35.9940, lng: -78.8986}
+        });
+        directionsDisplay.setMap(map);
+
+        var onChangeHandler = function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        };
+        $('.theaters').on('change', onChangeHandler);
+        
+      }
+
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        directionsService.route({
+          origin: 'fairfax, va',
+          destination: 'raleigh, nc',
+          travelMode: 'DRIVING'
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
+        
