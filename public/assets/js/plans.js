@@ -5,7 +5,7 @@ $(document).ready(function() {
 
 	$('#submit-button').on('click', function(e){
 		e.preventDefault();
-		
+		$('#foodDisplay, #movieDisplay').toggleClass('hide');
 		//Movie Search API
 		var startDate = $('#date-input').val().trim();
 		var zipCode = $('#zip-input').val().trim();
@@ -52,8 +52,10 @@ $(document).ready(function() {
 					$(currentMovie).append('<p class="plot">' + plot);
 					$(currentMovie).append('<select class="form-control theaters">');
 					$(currentMovie).append('<button id="buy-tickets" class="btn btn-default">Buy Tickets</button>');
-					$(currentMovie).append('<a class="site" target="_blank" href="' + website + '">Official Website</a>');
 
+					if (data[i].officialUrl){
+						$(currentMovie).append('<a class="site" target="_blank" href="' + website + '">Official Website</a>');
+					}
 					data[i].showtimes.forEach(function(i){
 						var theaterItem = '<option data-ticket="'+ i.ticketURI +'">' + i.theatre.name;
 						if (theaters.indexOf(theaterItem) == -1 ){
