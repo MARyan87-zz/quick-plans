@@ -80,20 +80,31 @@ img{
 .movieItem{
 	list-style: none;
 }
+.restItem{
+	list-style: none;
+}
 .movieItem:hover{
-	background-color: firebrick;
-	color: white;
+	background-color: snow;
+	color: black;
+	cursor: pointer;
+}
+.restItem:hover{
+	background-color: snow;
+	color: black;
 	cursor: pointer;
 }
 .movieItem:hover .theaters{
-	color: firebrick;
-	background-color: white;
+	color: black;
+	background-color: snow;
 }
 .movieItem:hover .expand{
-	color: white;
+	color: firebrick;
+}
+.restItem:hover .expand{
+	color: firebrick;
 }
 .movieItem:hover .site{
-	color: white;
+	color: black;
 }
 .title{
 	display: inline-block;
@@ -117,7 +128,7 @@ img{
 }
 .theaters, option{
 	margin-bottom:15px;
-	color: firebrick;
+	color: black;
 	font-weight: bold;
 }
 .hide{
@@ -131,9 +142,9 @@ img{
 	display: inline-block;
 	margin-left: 15px;
 }
-.open{
-	background-color: firebrick;
-	color: white;
+.open, .open2{
+	background-color: white;
+	color: black;
 }
 
 #city-label, #zip-label, #date-label {
