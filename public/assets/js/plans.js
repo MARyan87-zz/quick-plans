@@ -15,7 +15,7 @@ $(document).ready(function() {
 
 		$.ajax({url: api, method: 'GET'})
 			.done(function(data){
-				// console.log(data);
+				console.log(data);
 				
 				var movieList = $('<ul class="panel-body list-group" id="movieList">');
 				
