@@ -1,23 +1,18 @@
-html,body, .container{
+html,body, .wrap{
 	height: 100%;
+
 }
 #map{
 	height: 500px;
-	margin-bottom: 25px;
+	margin: 25px;
 }
 body{
 	background:url(https://newevolutiondesigns.com/images/freebies/city-wallpaper-2.jpg);
 	background-size: cover;
 	background-opacity:.9px;
 }
-h1{
-	color: red;
-	padding: 20px;
-	font-size: 60px;
-	font-weight: 10px;
-}
 label{
-	color: black;
+	color: white;
 	font-size: 15px;
 	margin-left: 10px;
 }
@@ -34,33 +29,68 @@ img{
 #submit-button{
  	margin-left: 10px;
 }
-#foodDisplay,
-#movieDisplay{
+#foodDisplay{
+	background: firebrick;
+	border: none;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
 	max-height: 500px;
+	/*max-width: 565px;*/
   	overflow: auto;
+}
+#movieDisplay{
+	
+	background: firebrick;
+	border: none;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+	max-height: 500px;
+	/*max-width: 565px;*/
+  	overflow: auto;
+}
+#content-area{
+	display: flex;
+	justify-content: space-between;
 }
 .jumbotron{
 	background: transparent;
 }
 .info{
 	opacity: .9;
-	display: flex;
+	background: firebrick;
+	border: none;
+}
+.panel-heading{
+	background-color:firebrick; 
+	color:white; 
+	border-radius: 20px;
+}
+.title{
+	max-width: 90%;
 }
 .title{
 	max-width: 90%;
 }
 .expand{
 	float: right;
-	color: red;
+	color: firebrick;
 	font-size: 3em;
 }
 .movieItem{
 	list-style: none;
 }
 .movieItem:hover{
-	background-color: red;
+	background-color: firebrick;
 	color: white;
 	cursor: pointer;
+}
+.movieItem:hover .theaters{
+	color: firebrick;
+	background-color: white;
 }
 .movieItem:hover .expand{
 	color: white;
@@ -90,17 +120,21 @@ img{
 }
 .theaters, option{
 	margin-bottom:15px;
-	color: red;
+	color: firebrick;
 	font-weight: bold;
 }
 .hide{
 	display: none;
+}
+
+.panel-heading+.list-group .list-group-item:first-child {
+    border-top-width: thin;
 }
 .unavailable{
 	display: inline-block;
 	margin-left: 15px;
 }
 .open{
-	background-color: red;
+	background-color: firebrick;
 	color: white;
 }

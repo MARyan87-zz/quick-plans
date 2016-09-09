@@ -9,7 +9,7 @@ $(document).ready(function() {
 		//Movie Search API
 		var startDate = $('#date-input').val().trim();
 		var zipCode = $('#zip-input').val().trim();
-		var api = 'http://data.tmsapi.com/v1.1/movies/showings?radius=15&startDate=' + startDate + '&zip=' + zipCode + '&api_key=kfh7px56m24sttw262g6scvs';
+		var api = 'http://data.tmsapi.com/v1.1/movies/showings?radius=15&startDate=' + startDate + '&zip=' + zipCode + '&api_key=3c7u9b4fnquyfbbkqzc2tzgj';
 		
 		
 
@@ -28,11 +28,11 @@ $(document).ready(function() {
 				        rating = data[i].ratings[0].code;
 					}
 					
-					$(movieList).append('<li class="movieItem list-group-item"><h3 						class="title">' + data[i].title +
+					$(movieList).append('<li class="movieItem list-group-item"><h3 class="title">' + data[i].title +
 										 '</h3><span class="expand">+</span>'+'<p class=rating>' + rating + 
 										 '</p>' + '<section class="hide" id="movie' + i + '">');
 				}
-				$('#movieDisplay').append(movieList);
+				$('#movieDisplay').html(movieList);
 				
 				for (var i=0; i<data.length; i++){
 					var currentMovie = '#movie' + i,
@@ -43,7 +43,9 @@ $(document).ready(function() {
 						
 					
 						
+
 					$(currentMovie).append('<h4 class="cast">Cast</h4><ul class="cast-members">');
+
 					for (var castMember in cast){
 						$(currentMovie + ' .cast-members').append('<li class="actor">' + cast[castMember]);
 					}
@@ -63,7 +65,8 @@ $(document).ready(function() {
 					theaters.forEach(function(i){
 							$(currentMovie + ' .theaters').append(i);
 					});
-					console.log(theaters);
+					
+
 					$(currentMovie + ' .theaters').first().attr('selected');
 				}
 
@@ -102,7 +105,7 @@ $(document).ready(function() {
 
 					$.ajax({url: detailURL, method: 'GET'})
 		 			.done(function(data) {
-		 				console.log('data: '+ JSON.stringify(data, 0,2));
+		 				// console.log('data: '+ JSON.stringify(data, 0,2));
 		 				var restName = data.result.name;
 		 				var restPhone = data.result.formatted_phone_number;
 						var restAddress = data.result.formatted_address;
@@ -150,14 +153,18 @@ $(document).on('click', '.expand', function(){
 	$(clickedMovie).addClass('open');
 	$(clickedMovie).find('section').toggleClass('hide');
 
-
 });
+
+
+
+
 
 //Buy movie tickets button
 $(document).on('click', '#buy-tickets', function(){
 	var ticketURL = $(this).siblings('select').children('option:selected').attr('data-ticket');
 	if (ticketURL == 'undefined'){
-		$(this).parent().append('<p class="unavailable">Tickets unavailable');
+		$(this).parent().append('<p class="unavailable">');
+		$('.unavailable').text('Tickets Unavailable');
 		console.log('undefined');
 	}
 	else{
@@ -178,7 +185,7 @@ function initMap() {
         var directionsService = new google.maps.DirectionsService;
         var directionsDisplay = new google.maps.DirectionsRenderer;
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 10,
+          zoom: 20,
           center: {lat: 35.9940, lng: -78.8986}
         });
         directionsDisplay.setMap(map);
@@ -186,16 +193,17 @@ function initMap() {
         var onChangeHandler = function() {
           calculateAndDisplayRoute(directionsService, directionsDisplay);
         };
-        $('.theaters').on('change', onChangeHandler);
-        
-      }
+        $(document).on('change', '.theaters', onChangeHandler);
+    }
 
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+      	console.log('test');
         directionsService.route({
-          origin: 'fairfax, va',
+          origin: $('.open section .theaters').val(),
           destination: 'raleigh, nc',
           travelMode: 'DRIVING'
         }, function(response, status) {
+        	console.log(response);
           if (status === 'OK') {
             directionsDisplay.setDirections(response);
           } else {
