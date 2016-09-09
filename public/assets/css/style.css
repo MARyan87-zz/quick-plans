@@ -3,18 +3,12 @@ html,body, .wrap{
 }
 #map{
 	height: 500px;
-	margin-bottom: 25px;
+	margin: 25px;
 }
 body{
 	background:url(https://newevolutiondesigns.com/images/freebies/city-wallpaper-2.jpg);
 	background-size: cover;
 	background-opacity:.9px;
-}
-h1{
-	color: red;
-	padding: 20px;
-	font-size: 60px;
-	font-weight: 10px;
 }
 label{
 	color: white;
@@ -92,7 +86,7 @@ img{
 
 .expand{
 	float: right;
-	color: red;
+	color: firebrick;
 	font-size: 3em;
 }
 .movieItem{
@@ -135,12 +129,13 @@ img{
 }
 .theaters, option{
 	margin-bottom:15px;
-	color: red;
+	color: firebrick;
 	font-weight: bold;
 }
 .hide{
 	display: none;
 }
+
 .panel-heading+.list-group .list-group-item:first-child {
     border-top-width: thin;
 }
@@ -149,7 +144,7 @@ img{
 	margin-left: 15px;
 }
 .open{
-	background-color: red;
+	background-color: firebrick;
 	color: white;
 }
 
