@@ -26,16 +26,16 @@ img{
 }
 
 #city-input, #zip-input{
-	width: 100px;
+	/*width: 100px;*/
 }
 
 #date-input {
-	width: 140px;
+	/*width: 140px;*/
 }
 
 #submit-button{
- 	margin-left: 10px;
- 	/*float: right;*/
+ 	/*margin-top: 10px;*/
+ 	float: right;
 }
 #foodDisplay{
 	background: firebrick;
