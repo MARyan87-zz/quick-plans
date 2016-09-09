@@ -143,3 +143,6 @@ img{
 	display: flex;
 	justify-content: center;
 }
+#directionsPanel{
+	background-color: white;
+}

@@ -113,7 +113,7 @@ $(document).ready(function() {
 		 				$(restList).append('<li class="restItem list-group-item">'
 		 					+ '<h3>' + restName + '</h3>'
 		 					+ '<span class="expand2">+</span>'
-		 					+ '<p class="address" data-addr='+restAddress+'>Address: ' + restAddress + '</p>'
+		 					+ '<p class="address" data-addr="'+restAddress+'">Address: ' + restAddress + '</p>'
 		 					+ '<p>Phone Number: ' + restPhone +'</p>'
 		 					+ '<section class="hide"><p>Rating: ' + restRating + '</p>'
 		 					+ '<p>Price Level: ' + restPrice + '</p>'
@@ -161,7 +161,7 @@ $(document).on('click', '.expand2', function(){
 	$('.open2').removeClass('open2');
 	$(clickedRestaurant).addClass('open2');
 	$(clickedRestaurant).find('section').toggleClass('hide')
-
+	console.log($('.open2 .address').data('addr'));
 });
 
 
@@ -196,20 +196,24 @@ function initMap() {
           center: {lat: 35.9940, lng: -78.8986}
         });
         directionsDisplay.setMap(map);
+        directionsDisplay.setPanel(document.getElementById('directionsPanel'));
 
         var onChangeHandler = function() {
           calculateAndDisplayRoute(directionsService, directionsDisplay);
         };
 
-        $(document).on('change', '.theaters', onChangeHandler);
+        $(document).on('change', '.theaters', function(){
+        	console.log($('.open section .theaters').val() + " " + $('#city-input').val() + ", " + $('#state-input').val());
+        });
+        $(document).on('click', '.expand2', onChangeHandler);
     }
 
 
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
       	console.log('test');
         directionsService.route({
-          origin: $('.open section .theaters').val() + ", " + $('#city-input').val(),
-          destination: $('.open .address').attr('data-addr'),
+          origin: $('.open2 .address').data('addr'),
+          destination: $('.open section .theaters').val() + " " + $('#city-input').val() + ", " + $('#state-input').val(),
           travelMode: 'DRIVING'
         }, function(response, status) {
         	console.log(response);
