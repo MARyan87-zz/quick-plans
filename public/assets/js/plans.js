@@ -202,9 +202,7 @@ function initMap() {
           calculateAndDisplayRoute(directionsService, directionsDisplay);
         };
 
-        $(document).on('change', '.theaters', function(){
-        	console.log($('.open section .theaters').val() + " " + $('#city-input').val() + ", " + $('#state-input').val());
-        });
+        $(document).on('change', '.theaters', onChangeHandler);
         $(document).on('click', '.expand2', onChangeHandler);
     }
 
