@@ -111,9 +111,9 @@ $(document).ready(function() {
 						var restRating = data.result.rating;
 
 		 				$(restList).append('<li class="restItem list-group-item">'
-		 					+ '<h3>' + restName + '</h3>'
+		 					+ '<h3 class="title">' + restName + '</h3>'
 		 					+ '<span class="expand2">+</span>'
-		 					+ '<p class="address" data-addr="'+restAddress+'">Address: ' + restAddress + '</p>'
+		 					+ '<section class="hide"><p class="address" data-addr="'+restAddress+'">Address: ' + restAddress + '</p>'
 		 					+ '<p>Phone Number: ' + restPhone +'</p>'
 		 					+ '<section class="hide"><p>Rating: ' + restRating + '</p>'
 		 					+ '<p>Price Level: ' + restPrice + '</p>'
@@ -127,7 +127,7 @@ $(document).ready(function() {
 		 						+ data.result.opening_hours.weekday_text[4]+'<br>'
 		 						+ data.result.opening_hours.weekday_text[5]+'<br>'
 		 						+ data.result.opening_hours.weekday_text[6]+'<br>'
-		 					+'</p>'
+		 					+'</p></section>'
 		 					);
 
 		 			});//end second ajax
