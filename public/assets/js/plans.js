@@ -92,10 +92,6 @@ $(document).ready(function() {
 		     	$('#foodDisplay').append(restList);
 		     	for (i=0; i<5; i++) {
 
-		   //   		var restName = response.results[i].name;
-					// var restAddress = response.results[i].formatted_address;
-					// var restPrice = response.results[i].price_level;
-					// var restRating = response.results[i].rating;
 					var restID = response.results[i].place_id;
 
 		     		var detailURL = "https://maps.googleapis.com/maps/api/place/details/json?placeid="
@@ -114,7 +110,7 @@ $(document).ready(function() {
 
 		 				$(restList).append('<li class="restItem list-group-item">'
 		 					+ '<h3>' + restName + '</h3>'
-		 					+ '<p>Address: ' + restAddress + '</p>'
+		 					+ '<p data-addr='+restAddress+'>Address: ' + restAddress + '</p>'
 		 					+ '<p>Phone Number: ' + restPhone +'</p>'
 		 					+ '<p>Rating: ' + restRating + '</p>'
 		 					+ '<p>Price Level: ' + restPrice + '</p>'
@@ -157,8 +153,6 @@ $(document).on('click', '.expand', function(){
 
 
 
-
-
 //Buy movie tickets button
 $(document).on('click', '#buy-tickets', function(){
 	var ticketURL = $(this).siblings('select').children('option:selected').attr('data-ticket');
@@ -194,7 +188,7 @@ function initMap() {
         };
         $('.theaters').on('change', onChangeHandler);
         
-      }
+      };
 
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         directionsService.route({
@@ -208,5 +202,5 @@ function initMap() {
             window.alert('Directions request failed due to ' + status);
           }
         });
-      }
+      };
         

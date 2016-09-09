@@ -1,5 +1,5 @@
-html,body, .container{
-	height: 100%;
+html,body, .wrap{
+	min-height: 100%;
 }
 #map{
 	height: 500px;
@@ -29,10 +29,19 @@ img{
 	width: 300px;
 	height: auto;
 	opacity: .94;
-
 }
+
+#city-input, #zip-input{
+	width: 100px;
+}
+
+#date-input {
+	width: 140px;
+}
+
 #submit-button{
  	margin-left: 10px;
+ 	/*float: right;*/
 }
 #foodDisplay{
 	background: firebrick;
@@ -68,6 +77,9 @@ img{
 	opacity: .9;
 	background: firebrick;
 	border: none;
+	margin: 0 auto;
+	width: 100%;
+	/*text-align: center;*/
 }
 .panel-heading{
 	background-color:firebrick; 
@@ -77,9 +89,7 @@ img{
 .title{
 	max-width: 90%;
 }
-.title{
-	max-width: 90%;
-}
+
 .expand{
 	float: right;
 	color: red;
@@ -141,4 +151,8 @@ img{
 .open{
 	background-color: red;
 	color: white;
+}
+
+#city-label, #zip-label, #date-label {
+	margin: auto;
 }
