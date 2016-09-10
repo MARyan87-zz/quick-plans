@@ -2,6 +2,7 @@
 
 //JavaScript for Google Place API
 $(document).ready(function() {
+	var theaterAddress;
 
 	$('#submit-button').on('click', function(e){
 		e.preventDefault();
@@ -50,7 +51,7 @@ $(document).ready(function() {
 						$(currentMovie + ' .cast-members').append('<li class="actor">' + cast[castMember]);
 					}
 					$(currentMovie).append('<p class="plot">' + plot);
-					$(currentMovie).append('<select class="form-control theaters">');
+					$(currentMovie).append('<select class="form-control theaters"><option selected disabled>Choose a Theater');
 					$(currentMovie).append('<button id="buy-tickets" class="btn btn-default">Buy Tickets</button>');
 
 					if (data[i].officialUrl){
@@ -69,12 +70,12 @@ $(document).ready(function() {
 					});
 					
 
-					$(currentMovie + ' .theaters').first().attr('selected');
+					// $(currentMovie + ' .theaters').first().attr('selected');
 				}
 
 
 
-		});
+		}); //MOVIE AJAX
 
 
 		
@@ -138,12 +139,17 @@ $(document).ready(function() {
 		    $('#foodDisplay').html(restList);
 			});//end Ajax call
 
-		 	//More Info Button
+		 	
 
 		 	
 
 	});
-});//end doc.ready
+
+});
+
+
+
+
 
 
 
@@ -202,7 +208,23 @@ function initMap() {
           calculateAndDisplayRoute(directionsService, directionsDisplay);
         };
 
-        $(document).on('change', '.theaters', onChangeHandler);
+        $(document).on('change', '.theaters', function(){
+        	//get theater address
+        	var city = $('#city-input').val().trim(); 
+        	var state = $('#state-input').val().trim();
+			var APIkey = "AIzaSyALJbj11Xt_-8qRs3J4ucmPViDVVl3YBOY";
+			var selectedTheater = $('.open .theaters').val().trim();
+			var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+selectedTheater+"+"+
+							city+state+"&key=" + APIkey;
+
+
+				$.ajax({url: queryURL, method: 'GET'})
+		 			.done(function(response) {
+		 				theaterAddress = response.results[0].formatted_address;
+		 				onChangeHandler();
+		 			});
+        	
+        });
         $(document).on('click', '.expand2', onChangeHandler);
     }
 
@@ -211,7 +233,7 @@ function initMap() {
       	console.log('test');
         directionsService.route({
           origin: $('.open2 .address').data('addr'),
-          destination: $('.open section .theaters').val() + " " + $('#city-input').val() + ", " + $('#state-input').val(),
+          destination: theaterAddress,
           travelMode: 'DRIVING'
         }, function(response, status) {
         	console.log(response);
