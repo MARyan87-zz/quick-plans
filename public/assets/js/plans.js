@@ -91,7 +91,7 @@ $(document).ready(function() {
 		     	console.log("response: "+response);
 		     	var restList = $('<ul class="panel-body list-group" id="restList">');
 
-		     	$('#foodDisplay').append(restList);
+		     	
 		     	for (i=0; i<5; i++) {
 
 					var restID = response.results[i].place_id;
@@ -135,7 +135,7 @@ $(document).ready(function() {
 
 		     	}//end for loop
 
-		    
+		    $('#foodDisplay').html(restList);
 			});//end Ajax call
 
 		 	//More Info Button
