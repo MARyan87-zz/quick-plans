@@ -14,6 +14,9 @@ html,body, .wrap{
 	display: flex;
 	justify-content: space-between;
 }
+#help{
+	font-size: 15px;
+}
 body{
 	background:url(https://newevolutiondesigns.com/images/freebies/city-wallpaper-2.jpg);
 	background-size: cover;
@@ -70,6 +73,10 @@ img{
 	margin: 0 auto;
 	width: 100%;
 	/*text-align: center;*/
+}
+.help{
+	background-color: darkgrey;
+	border-radius: 5px;
 }
 .panel-heading{
 	background-color:firebrick; 

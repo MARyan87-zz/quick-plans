@@ -4,9 +4,19 @@
 $(document).ready(function() {
 	var theaterAddress;
 
+
+	$('.help').on('click', function(e){
+		e.preventDefault();
+		var helpInfo = $("<p>Please enter your city, state, zip, and the date you are wanting to make plans, and then press submit!</p>");
+
+		$('#help').html(helpInfo);
+	});
+
+
 	$('#submit-button').on('click', function(e){
 		e.preventDefault();
 		
+		$('#help').empty();
 		//Movie Search API
 		var startDate = $('#date-input').val().trim();
 		var zipCode = $('#zip-input').val().trim();
