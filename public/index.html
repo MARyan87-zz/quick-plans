@@ -8,7 +8,7 @@
   </head>
   <body>
 
-  <div class="container wrap">
+  <div class="container-fluid wrap">
 
     <div class="jumbotron text-center">
       <img src="assets/images/bletter2.png">
@@ -28,32 +28,45 @@
 
         
         <input class="form-control" type="date" format="mm/dd/yyyy" placeholder="Enter Date of Plans (mm/dd/yyyy)" id="date-input">
+        <input type='submit' class='btn btn-default' id='submit-button' value='Submit'>
 
-        <input class="form-control" type="submit" class='btn btn-default' id="submit-button">
     </div>
     </form>
 
-    <div class='row'>
-      <div class='col-xs-6'>
+    <div id='headers' class='row'>
+      <div class='col-md-4'>
           <h2 class="panel panel-heading text-center">Restaurants</h2>
       </div>
-      <div class='col-xs-6'>
-        <h2 class="panel panel-heading text-center">Movies in Theaters</h2>
+      <div class='col-md-4'></div>
+      <div class='col-md-4'>    
+          <h2 class="panel panel-heading text-center">Movies in Theaters</h2>
       </div>
-    </div>
-    <div id='content-area' class='row'>
-      <div id="foodDisplay" class="col-xs-5"></div>
-      <div id="movieDisplay" class="col-xs-5"></div>
-    </div>
-  </div>  
-    <div class='container'>
-      <div id='map-container' class="row">
-        <div id='map' class='col-xs-10'></div>
+    </div> 
+
+    <div class='row'>
+      <div class='col-md-4'>
+        <div id="foodDisplay"></div>
+      </div> 
+
+      <div class='col-md-4'>
+        <div id='map-container'>
+          <div id='map'></div>
+        </div>
       </div>
-      <div class='row text-center'>
-        <div class='col-xs-10' id='directionsPanel'></div>
-      </div>
+      <div class='col-md-4'>
+        <div id="movieDisplay"></div>
+      </div>  
     </div>
+    <div id='directions-box' class='row'>
+      <div id='directionsPanel' class='col-xs-4'></div>
+    </div>
+  
+
+
+  </div>
+    
+   
+    
 
   <!-- jQuery Script -->
   <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>

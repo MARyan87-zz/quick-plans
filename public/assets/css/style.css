@@ -4,6 +4,15 @@ html,body, .wrap{
 #map{
 	height: 500px;
 	margin: 25px;
+	width: 100%;
+}
+#directions-box{
+	display: flex;
+	justify-content: center;
+}
+#headers{
+	display: flex;
+	justify-content: space-between;
 }
 body{
 	background:url(https://newevolutiondesigns.com/images/freebies/city-wallpaper-2.jpg);
