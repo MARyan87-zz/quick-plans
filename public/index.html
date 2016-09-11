@@ -28,34 +28,39 @@
 
         
         <input class="form-control" type="date" format="mm/dd/yyyy" placeholder="Enter Date of Plans (mm/dd/yyyy)" id="date-input">
+        <span class="glyphicon glyphicon-question-sign"></span>
         <input type='submit' class='btn btn-default' id='submit-button' value='Submit'>
 
     </div>
     </form>
 
     <div id='headers' class='row'>
-      <div class='col-md-4'>
-          <h2 class="panel panel-heading text-center">Restaurants</h2>
+      
+        <div class='col-md-4 col-sm-6'>
+            <h2 class="panel panel-heading text-center">Restaurants</h2>
+        </div>
+      
+
+      <div class='col-md-4 col-sm-6'>    
+          <h2 class="panel panel-heading text-center">Movies</h2>
       </div>
-      <div class='col-md-4'></div>
-      <div class='col-md-4'>    
-          <h2 class="panel panel-heading text-center">Movies in Theaters</h2>
-      </div>
+      <div class='col-md-4 col-sm-12'></div>
     </div> 
 
     <div class='row'>
-      <div class='col-md-4'>
+      <div class='col-md-4 col-sm-6'>
         <div id="foodDisplay"></div>
       </div> 
 
-      <div class='col-md-4'>
+      
+      <div class='col-md-4 col-sm-6'>
+        <div id="movieDisplay"></div>
+      </div> 
+      <div class='col-md-4 col-sm-12'>
         <div id='map-container'>
           <div id='map'></div>
         </div>
-      </div>
-      <div class='col-md-4'>
-        <div id="movieDisplay"></div>
-      </div>  
+      </div> 
     </div>
     <div id='directions-box' class='row'>
       <div id='directionsPanel' class='col-xs-4'></div>
