@@ -25,7 +25,6 @@ body{
 label{
 	color: white;
 	font-size: 15px;
-	margin-left: 10px;
 }
 form{
 	display: flex;
@@ -172,4 +171,8 @@ img{
 }
 #directionsPanel{
 	background-color: white;
+}
+#comment-form{
+	max-width: 405px;
+	padding: 15px;
 }
