@@ -1,6 +1,9 @@
 html,body, .wrap{
 	min-height: 100%;
 }
+/*#content-area{
+	visibility: hidden;
+}*/
 #map{
 	height: 500px;
 	margin: 25px;
@@ -9,10 +12,14 @@ html,body, .wrap{
 #directions-box{
 	display: flex;
 	justify-content: center;
+	margin: 15px;
 }
 #headers{
 	display: flex;
 	justify-content: space-between;
+}
+#help{
+	font-size: 15px;
 }
 body{
 	background:url(https://newevolutiondesigns.com/images/freebies/city-wallpaper-2.jpg);
@@ -33,17 +40,7 @@ img{
 	height: auto;
 	opacity: .94;
 }
-
-#city-input, #zip-input{
-	/*width: 100px;*/
-}
-
-#date-input {
-	/*width: 140px;*/
-}
-
 #submit-button{
- 	/*margin-top: 10px;*/
  	float: right;
 }
 #foodDisplay, #movieDisplay{
@@ -55,11 +52,6 @@ img{
   	overflow: auto;
   	visibility: hidden;
 }
-
-#content-area{
-	display: flex;
-	justify-content: space-between;
-}
 .jumbotron{
 	background: transparent;
 }
@@ -69,7 +61,10 @@ img{
 	border: none;
 	margin: 0 auto;
 	width: 100%;
-	/*text-align: center;*/
+}
+.help{
+	background-color: darkgrey;
+	border-radius: 5px;
 }
 .panel-heading{
 	background-color:firebrick; 

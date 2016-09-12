@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>Quick Plans</title>
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   </head>
@@ -16,67 +15,47 @@
 
     <form class="form-inline row">
     <div class="info well col-xs-12">
-
-        
         <input class="form-control" type="text" name="city" placeholder="Enter City (ex: New York)" id="city-input">
-
-        
         <input class="form-control" type="text" name="state" placeholder="Enter State (ex: North Carolina)" id="state-input">
-
-        
         <input class="form-control" type="number" name="zipcode" placeholder="Enter Zip (ex: 29076)" id="zip-input">
-
-        
         <input class="form-control" type="date" format="mm/dd/yyyy" placeholder="Enter Date of Plans (mm/dd/yyyy)" id="date-input">
-        <span class="glyphicon glyphicon-question-sign"></span>
+        
         <input type='submit' class='btn btn-default' id='submit-button' value='Submit'>
-
     </div>
     </form>
+    <div id='content-area'>
+      <div class='row'>
+        <div class='col-sm-6 col-md-4'>
+          <h2 class="panel panel-heading text-center">Restaurants</h2>
 
-    <div id='headers' class='row'>
-      
-        <div class='col-md-4 col-sm-6'>
-            <h2 class="panel panel-heading text-center">Restaurants</h2>
+          <div id="foodDisplay"></div>
+        </div> 
+
+        <div class='col-sm-6 col-md-push-4 col-lg-4'>
+          <h2 class="panel panel-heading text-center">Movies in Theaters</h2>
+          <div id="movieDisplay"></div>
         </div>
-      
+        <div class='col-xs-12 col-md-4 col-md-pull-4'>
+          <div id='map-container'>
+            <div id='map'></div>
+          </div>
+        </div>  
 
-      <div class='col-md-4 col-sm-6'>    
-          <h2 class="panel panel-heading text-center">Movies</h2>
       </div>
-      <div class='col-md-4 col-sm-12'></div>
-    </div> 
-
-    <div class='row'>
-      <div class='col-md-4 col-sm-6'>
-        <div id="foodDisplay"></div>
-      </div> 
-
-      
-      <div class='col-md-4 col-sm-6'>
-        <div id="movieDisplay"></div>
-      </div> 
-      <div class='col-md-4 col-sm-12'>
-        <div id='map-container'>
-          <div id='map'></div>
-        </div>
-      </div> 
+      <div id='directions-box' class='row'>
+        <div id='directionsPanel' class='col-lg-6'></div>
+      </div>
     </div>
-    <div id='directions-box' class='row'>
-      <div id='directionsPanel' class='col-xs-4'></div>
-    </div>
-  
-
-
-  </div>
+</div>
     
    
-    
+
 
   <!-- jQuery Script -->
   <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
   <!-- JavaScript Source -->
   <script src="assets/js/plans.js"></script>
+  <!-- Map Script -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4UcpjPyyGuGbduMQ3ri-Gyd_JCPBhbXQ&amp;callback=initMap"
     async defer></script>
   </body>

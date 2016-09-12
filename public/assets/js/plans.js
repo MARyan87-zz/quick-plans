@@ -4,9 +4,12 @@
 $(document).ready(function() {
 	var theaterAddress;
 
+
 	$('#submit-button').on('click', function(e){
 		e.preventDefault();
+		$('#content-area').css('visibility', 'visible');
 		
+		$('#help').empty();
 		//Movie Search API
 		var startDate = $('#date-input').val().trim();
 		var zipCode = $('#zip-input').val().trim();
@@ -23,7 +26,7 @@ $(document).ready(function() {
 				for (var i=0; i<data.length; i++){
 					
 					var rating = "Not Rated";
-					// console.log("Data object: " + data[i]);
+					
 					
 					if (data[i].hasOwnProperty("ratings")){
 				        rating = data[i].ratings[0].code;
@@ -68,20 +71,14 @@ $(document).ready(function() {
 					theaters.forEach(function(i){
 							$(currentMovie + ' .theaters').append(i);
 					});
-					
-
-					// $(currentMovie + ' .theaters').first().attr('selected');
 				}
-
-
-
-		}); //MOVIE AJAX
+			}); //MOVIE AJAX
 
 
 		
 		//Restaurant Search API
 		var city = $('#city-input').val().trim(); 
-		var APIkey = "AIzaSyALJbj11Xt_-8qRs3J4ucmPViDVVl3YBOY";
+		var APIkey = "AIzaSyBCgAOFFu6yhGh9uDElMFpjd5ua70ByuwI";
 		var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+"
 				+ city + "&key=" + APIkey;
 
@@ -133,18 +130,12 @@ $(document).ready(function() {
 
 		 			});//end second ajax
 
-
-		     	}//end for loop
+				}//end for loop
 
 		    $('#foodDisplay').html(restList);
 			});//end Ajax call
 
-		 	
-
-		 	
-
 	});
-
 });
 
 
@@ -186,8 +177,8 @@ $(document).on('click', '#buy-tickets', function(){
 });
 
 //maps apikey AIzaSyC4UcpjPyyGuGbduMQ3ri-Gyd_JCPBhbXQ
-
-
+//            AIzaSyBCgAOFFu6yhGh9uDElMFpjd5ua70ByuwI
+//            AIzaSyALJbj11Xt_-8qRs3J4ucmPViDVVl3YBOY
 
 
 
@@ -212,7 +203,7 @@ function initMap() {
         	//get theater address
         	var city = $('#city-input').val().trim(); 
         	var state = $('#state-input').val().trim();
-			var APIkey = "AIzaSyALJbj11Xt_-8qRs3J4ucmPViDVVl3YBOY";
+			var APIkey = "AIzaSyBCgAOFFu6yhGh9uDElMFpjd5ua70ByuwI";
 			var selectedTheater = $('.open .theaters').val().trim();
 			var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+selectedTheater+"+"+
 							city+state+"&key=" + APIkey;
