@@ -29,7 +29,6 @@ body{
 label{
 	color: white;
 	font-size: 15px;
-	margin-left: 10px;
 }
 form{
 	display: flex;
@@ -60,7 +59,7 @@ img{
 	background: firebrick;
 	border: none;
 	margin: 0 auto;
-	width: 100%;
+	width: 65%;
 }
 .help{
 	background-color: darkgrey;
@@ -160,4 +159,12 @@ img{
 }
 #directionsPanel{
 	background-color: white;
+}
+#comment-form{
+	max-width: 405px;
+	padding: 15px;
+}
+#textarea{
+	background: firebrick;
+	border: none;
 }
