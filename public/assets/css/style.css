@@ -1,9 +1,9 @@
 html,body, .wrap{
 	min-height: 100%;
 }
-/*#content-area{
+#content-area{
 	visibility: hidden;
-}*/
+}
 #map{
 	height: 500px;
 	margin: 25px;

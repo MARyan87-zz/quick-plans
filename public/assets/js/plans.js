@@ -1,86 +1,84 @@
 // GRACENOTE API Keys:  kfh7px56m24sttw262g6scvs      3c7u9b4fnquyfbbkqzc2tzgj
 
-//JavaScript for Google Place API
+
 $(document).ready(function() {
 	var theaterAddress;
-
-
+	
 	$('#submit-button').on('click', function(e){
 		e.preventDefault();
 		$('#content-area').css('visibility', 'visible');
 		
-		$('#help').empty();
-		//Movie Search API
-		var startDate = $('#date-input').val().trim();
-		var zipCode = $('#zip-input').val().trim();
-		var api = 'http://data.tmsapi.com/v1.1/movies/showings?radius=15&startDate=' + startDate + '&zip=' + zipCode + '&api_key=3c7u9b4fnquyfbbkqzc2tzgj';
-		
-		$('#foodDisplay, #movieDisplay').css('visibility', 'visible');
 
-		$.ajax({url: api, method: 'GET'})
-			.done(function(data){
-				console.log(data);
-				
-				var movieList = $('<ul class="panel-body list-group" id="movieList">');
-				
-				for (var i=0; i<data.length; i++){
+				//Movie Search API
+			var startDate = $('#date-input').val().trim();
+			var zipCode = $('#zip-input').val().trim();
+			var api = 'http://data.tmsapi.com/v1.1/movies/showings?radius=15&startDate=' + startDate + '&zip=' + zipCode + '&api_key=3c7u9b4fnquyfbbkqzc2tzgj';
+			
+			$('#foodDisplay, #movieDisplay').css('visibility', 'visible');
+
+			$.ajax({url: api, method: 'GET'})
+				.done(function(data){
+					console.log(data);
 					
-					var rating = "Not Rated";
+					var movieList = $('<ul class="panel-body list-group" id="movieList">');
 					
-					
-					if (data[i].hasOwnProperty("ratings")){
-				        rating = data[i].ratings[0].code;
-					}
-					
-					$(movieList).append('<li class="movieItem list-group-item"><h3 class="title">' + data[i].title +
-										 '</h3><span class="expand">+</span>'+'<p class=rating>' + rating + 
-										 '</p>' + '<section class="hide" id="movie' + i + '">');
-				}
-				$('#movieDisplay').html(movieList);
-				
-				for (var i=0; i<data.length; i++){
-					var currentMovie = '#movie' + i,
-						plot = data[i].shortDescription,
-						website = data[i].officialUrl,
-						cast = data[i].topCast,
-						theaters = [];
+					for (var i=0; i<data.length; i++){
 						
-					
+						var rating = "Not Rated";
 						
-
-					$(currentMovie).append('<h4 class="cast">Cast</h4><ul class="cast-members">');
-
-					for (var castMember in cast){
-						$(currentMovie + ' .cast-members').append('<li class="actor">' + cast[castMember]);
-					}
-					$(currentMovie).append('<p class="plot">' + plot);
-					$(currentMovie).append('<select class="form-control theaters"><option selected disabled>Choose a Theater');
-					$(currentMovie).append('<button id="buy-tickets" class="btn btn-default">Buy Tickets</button>');
-
-					if (data[i].officialUrl){
-						$(currentMovie).append('<a class="site" target="_blank" href="' + website + '">Official Website</a>');
-					}
-					data[i].showtimes.forEach(function(i){
-						var theaterItem = '<option data-ticket="'+ i.ticketURI +'">' + i.theatre.name;
-						if (theaters.indexOf(theaterItem) == -1 ){
-							theaters.push(theaterItem);
+						
+						if (data[i].hasOwnProperty("ratings")){
+					        rating = data[i].ratings[0].code;
 						}
 						
-					});
+						$(movieList).append('<li class="movieItem list-group-item"><h3 class="title">' + data[i].title +
+											 '</h3><span class="expand">+</span>'+'<p class=rating>' + rating + 
+											 '</p>' + '<section class="hide" id="movie' + i + '">');
+					}
+					$('#movieDisplay').html(movieList);
+					
+					for (var i=0; i<data.length; i++){
+						var currentMovie = '#movie' + i,
+							plot = data[i].shortDescription,
+							website = data[i].officialUrl,
+							cast = data[i].topCast,
+							theaters = [];
+							
+						
+							
 
-					theaters.forEach(function(i){
-							$(currentMovie + ' .theaters').append(i);
-					});
-				}
-			}); //MOVIE AJAX
+						$(currentMovie).append('<h4 class="cast">Cast</h4><ul class="cast-members">');
 
+						for (var castMember in cast){
+							$(currentMovie + ' .cast-members').append('<li class="actor">' + cast[castMember]);
+						}
+						$(currentMovie).append('<p class="plot">' + plot);
+						$(currentMovie).append('<select class="form-control theaters"><option selected disabled>Choose a Theater');
+						$(currentMovie).append('<button id="buy-tickets" class="btn btn-default">Buy Tickets</button>');
 
+						if (data[i].officialUrl){
+							$(currentMovie).append('<a class="site" target="_blank" href="' + website + '">Official Website</a>');
+						}
+						data[i].showtimes.forEach(function(i){
+							var theaterItem = '<option data-ticket="'+ i.ticketURI +'">' + i.theatre.name;
+							if (theaters.indexOf(theaterItem) == -1 ){
+								theaters.push(theaterItem);
+							}
+							
+						});
+
+						theaters.forEach(function(i){
+								$(currentMovie + ' .theaters').append(i);
+						});
+					}
+				}); //MOVIE AJAX
 		
-		//Restaurant Search API
-		var city = $('#city-input').val().trim(); 
-		var APIkey = "AIzaSyBCgAOFFu6yhGh9uDElMFpjd5ua70ByuwI";
-		var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+"
-				+ city + "&key=" + APIkey;
+
+			//Restaurant Search API
+			var city = $('#city-input').val().trim(); 
+			var APIkey = "AIzaSyBCgAOFFu6yhGh9uDElMFpjd5ua70ByuwI";
+			var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+"
+					+ city + "&key=" + APIkey;
 
 
 			$.ajax({url: queryURL, method: 'GET'})
@@ -127,22 +125,12 @@ $(document).ready(function() {
 		 						+ data.result.opening_hours.weekday_text[6]+'<br>'
 		 					+'</p></section>'
 		 					);
-
-		 			});//end second ajax
-
+					});//end second ajax
 				}//end for loop
-
-		    $('#foodDisplay').html(restList);
-			});//end Ajax call
-
+				$('#foodDisplay').html(restList);
+			});//end Ajax call	
 	});
 });
-
-
-
-
-
-
 
 $(document).on('click', '.expand', function(){
 	var clickedMovie = $(this).parent();
@@ -161,8 +149,6 @@ $(document).on('click', '.expand2', function(){
 	console.log($('.open2 .address').data('addr'));
 });
 
-
-
 //Buy movie tickets button
 $(document).on('click', '#buy-tickets', function(){
 	var ticketURL = $(this).siblings('select').children('option:selected').attr('data-ticket');
@@ -180,17 +166,19 @@ $(document).on('click', '#buy-tickets', function(){
 //            AIzaSyBCgAOFFu6yhGh9uDElMFpjd5ua70ByuwI
 //            AIzaSyALJbj11Xt_-8qRs3J4ucmPViDVVl3YBOY
 
-
-
-
-
+	$.ajax({url: 'http://ip-api.com/json', async: false, method: 'GET'})
+			.done(function(loc){
+				xlat = loc.lat;
+				xlon = loc.lon;
+	});
 
 function initMap() {
-        var directionsService = new google.maps.DirectionsService;
+
+		var directionsService = new google.maps.DirectionsService;
         var directionsDisplay = new google.maps.DirectionsRenderer;
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 20,
-          center: {lat: 35.9940, lng: -78.8986}
+          center: {lat: xlat, lng: xlon}
         });
         directionsDisplay.setMap(map);
         directionsDisplay.setPanel(document.getElementById('directionsPanel'));
@@ -219,8 +207,7 @@ function initMap() {
         $(document).on('click', '.expand2', onChangeHandler);
     }
 
-
-      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+	function calculateAndDisplayRoute(directionsService, directionsDisplay) {
       	console.log('test');
         directionsService.route({
           origin: $('.open2 .address').data('addr'),
@@ -235,4 +222,4 @@ function initMap() {
           }
         });
       };
-        
+
