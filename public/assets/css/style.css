@@ -76,7 +76,10 @@ img{
 .title{
 	max-width: 90%;
 }
-
+.unavail{
+	margin-left: 15px;
+	font-weight: bold;
+}
 .expand, .expand2{
 	float: right;
 	color: firebrick;

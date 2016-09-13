@@ -21,7 +21,7 @@ $(document).ready(function() {
 				//Movie Search API
 			var startDate = $('#date-input').val().trim();
 			var zipCode = $('#zip-input').val().trim();
-			var api = 'http://data.tmsapi.com/v1.1/movies/showings?radius=15&startDate=' + startDate + '&zip=' + zipCode + '&api_key=3c7u9b4fnquyfbbkqzc2tzgj';
+			var api = 'http://data.tmsapi.com/v1.1/movies/showings?radius=10&startDate=' + startDate + '&zip=' + zipCode + '&api_key=3c7u9b4fnquyfbbkqzc2tzgj';
 			
 			$('#foodDisplay, #movieDisplay').css('visibility', 'visible');
 
@@ -63,7 +63,7 @@ $(document).ready(function() {
 						}
 						$(currentMovie).append('<p class="plot">' + plot);
 						$(currentMovie).append('<select class="form-control theaters"><option selected disabled>Choose a Theater');
-						$(currentMovie).append('<button id="buy-tickets" class="btn btn-default">Buy Tickets</button>');
+						$(currentMovie).append('<button id="buy-tickets" class="btn btn-default">Buy Tickets</button><span class="unavail"></span>');
 
 						if (data[i].officialUrl){
 							$(currentMovie).append('<a class="site" target="_blank" href="' + website + '">Official Website</a>');
@@ -162,9 +162,7 @@ $(document).on('click', '.expand2', function(){
 $(document).on('click', '#buy-tickets', function(){
 	var ticketURL = $(this).siblings('select').children('option:selected').attr('data-ticket');
 	if (ticketURL == 'undefined'){
-		$(this).parent().append('<p class="unavailable">');
-		$('.unavailable').text('Tickets Unavailable');
-		console.log('undefined');
+		$(this).siblings('.unavail').html('Tickets Unavailable');
 	}
 	else{
 		window.open(ticketURL);
