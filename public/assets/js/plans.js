@@ -8,7 +8,6 @@ $(document).ready(function() {
 	$('.help').on('click', function(e){
 		e.preventDefault();
 		var helpInfo = $("<p>Please enter your city, state, zip, and the date you are wanting to make plans, and then press submit!</p>");
-
 		$('#help').html(helpInfo);
 	});
 	

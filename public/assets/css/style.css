@@ -64,6 +64,9 @@ img{
 .help{
 	background-color: darkgrey;
 	border-radius: 5px;
+	font-weight: bolder;
+	font-size: 22px;
+	padding: 2px 12px;
 }
 .panel-heading{
 	background-color:firebrick; 
@@ -167,4 +170,8 @@ img{
 #textarea{
 	background: firebrick;
 	border: none;
+}
+#comment-input{
+	width: 100%;
+	resize: none;
 }
