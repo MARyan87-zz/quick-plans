@@ -1,5 +1,3 @@
-// GRACENOTE API Keys:  kfh7px56m24sttw262g6scvs      3c7u9b4fnquyfbbkqzc2tzgj
-
 
 $(document).ready(function() {
 	var theaterAddress;
@@ -169,9 +167,6 @@ $(document).on('click', '#buy-tickets', function(){
 	}
 });
 
-//maps apikey AIzaSyC4UcpjPyyGuGbduMQ3ri-Gyd_JCPBhbXQ
-//            AIzaSyBCgAOFFu6yhGh9uDElMFpjd5ua70ByuwI
-//            AIzaSyALJbj11Xt_-8qRs3J4ucmPViDVVl3YBOY
 
 	$.ajax({url: 'http://ip-api.com/json', async: false, method: 'GET'})
 			.done(function(loc){
