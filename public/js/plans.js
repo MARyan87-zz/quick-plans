@@ -226,30 +226,5 @@ function initMap() {
       };
 
 
-    var config = {
-    	apiKey: "AIzaSyAfbThKHoezHR-AMy1lasxec12t8byl-lM",
-    	authDomain: "timmy-a3579.firebaseapp.com",
-    	databaseURL: "https://timmy-a3579.firebaseio.com",
-    	storageBucket: "timmy-a3579.appspot.com",
-  	};//config for firebase
 
-  	firebase.initializeApp(config);
-
-
-	var database = firebase.database();
-
-
-
-	$("#add-comment").on("click", function(e) {
-		e.preventDefault();
-
-
-		var comment = $('#comment-input').val().trim();
-
-		database.ref().push({
-			comment: comment,
-		});
-
-	document.getElementById("comment-form").reset();
-	});//end of add-comment on click
 
